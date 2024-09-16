@@ -1,0 +1,209 @@
+Linear DS
+Stack underflow _ Stack is empty
+Stack Overflow  _ Stack is full 
+
+Stack STL - 
+Header file ---- #include<Stack>
+
+creation of stacck   == Stack<data_type> stack_name;
+
+for instacne - stack<int> st;
+               stack<char> st;
+               stack<string> st;
+
+
+
+Insert -- stack_name.push(data);
+
+            st.push(10);
+
+
+Remove -- Stack_name.pop();
+
+For instacne, st.pop();
+
+Size == Stack_name.size();
+st.size();
+
+
+chek if stack is empty -- Stack_name.empty();
+
+for instacne, st.empty();
+
+ fetch top item == Stack_name.top();
+
+ for instacne, st.top();
+
+check stack code c1-stack.cpp
+
+
+stack ke elements ko left, right and bottom se access nahi kar sakte, obnly and bottom elements ko access karna hai to top elemen5t ko pop karna padega and ek time par sirf ek time par sifr ek hi element ko access kar sakte hai.
+
+stack implementation using array -- stack_with_arr.cpp
+
+-----------Stack---------------
+Order               Reverse Order
+"ABCD"              "DCBA"
+
+left se koi ordering beji and right se us ordering ka reverse order mil raha he
+
+// stack is recursion, recursion is stack. ye line sirf hmare liye hai kisi or ko explain 
+karte time nahi bolni.. 
+
+
+jo kan humbnne recursiion se kiye hai usi kam ko hum stack ki help se bhi kar sakte hai kyuki recursion mai9 bhi call stack hi ban raha hota hai
+
+
+code - reverse string using stack -- reverseStringStack.cpp   -- solve (https://leetcode.com/problems/reverse-string/submissions/1381673509/)
+
+
+Middle Element of the stack
+
+Mid in case odd = size/2 + 1 = position
+Ex if size is 7 then 7/2 = 3 + 1 = 4;
+min in case of even is only size/2 = pos 
+
+base case - if (pos == 1) -> mid found 
+
+1 pos --
+2 temp = st.top();
+3 st.pop();
+4 recurssive call
+5 Backtracking st.push(temp);
+
+// temp isliye create kiya hai so that recursive call se return karte time stack ke elements ko restore karva sake using bt.
+
+see midStack.cpp
+see deletemid.cpp
+
+
+Insert on element at the bottom of a stack
+given a stack of n integers and an elemnt x. you have to insert x at the bottom of the stack. 
+
+example 1; 
+input 
+n =  5;
+x = 2;
+st {4, 5, 2, 1, 3}
+op { 2, 4, 3}
+
+code -- insertAtBottom.cpp
+
+--------------------------------------------------
+Reverse stack 
+given a stack Reverse it 
+example one 1 
+st = {3,2,1,7,6}
+op = {6,7,1,2,3}
+
+recursive Approach 
+-- base case jb stack empty ho jaye then return 
+steps 
+1 = int temp = st.top();
+2 = st.pop();
+3 = make recursive calls until base case achieved 
+4 = insert temp at bottom of the stack during backtracking 
+
+code = reversestack 1 
+
+
+==========================================================
+jb bhi stack mai top element find out kr rhe ho ya pop kar stack
+kare stack mai se, always check if stack is empty st.empty();
+
+* sort stack-
+example = 
+input - stack = 11 2 32 3 41
+op = 41 32 11 3 2 
+
+
+code - sortStack.cpp
+
+--------------------------------------------------------------------------
+
+lecture -2 ---------------------------
+_________________________________________________________
+
+Implement 2 stack in a single array 
+
+
+// Approach 
+    n/2       |     n/2 
+--------------  ----------------
+[stack 1      ]  [stack 2       ]
+[_________________________________]
+            <- n ->
+
+let we have to push the elements in stack1;
+
+[10, 20, 30,40 | , , , , ]
+stack 1         stack2
+
+now we have to push one more element 50 in stack1 but stack1 is full and stack2 is empty so we cant insert more element in stak1 
+
+se, the approach is not good to divide array in to two equal halves as log of memory gets wasted
+
+But it is the one the approacches 
+
+
+
+Approach 1 
+
+top 1                            top2
+|_> -1   0 ,1 2 3 4 5 6 7 8 9 10 <-|
+
+Class stack contains 4 data members 
+class stack {
+    int *arr;
+    int size;
+    int top1;
+    int top2;
+
+}
+
+as we know stack elements can be accessed only from top let ->
+stac1 has top1
+stac2 has top2
+
+Initially to p1 is at -1 
+          to p2 is at size . (here size is size of array)
+
+// conditions of underflow 
+
+when top1 == -1 stack 1 is empty 
+when top2 == size, stack 2 is empty 
+
+conditions of overflow 
+
+jb top1 and top2 adjacement positions per ho, it means there is no more space in the stack
+.ie top2-top1 == 1
+
+code -- TwoStack1Arr.cpp
+
+
+
+---------------------------------------
+valid parenthesis 
+Given a string s containing just characters 
+'(', ')', { , } , [, ]  ... Determine iff the input stringg is valid or not
+
+an input string is valid if -=-
+1 open brackets must be closed by the smae type of brackets.
+
+open brackets must be cled in the corrct order 
+
+every close bracket has a corresponding open bracket of same type 
+
+
+ex 
+s = "()"
+true 
+
+input  " {[]()};
+op = true 
+
+s = ([)]
+false 
+
+
+code -- 
